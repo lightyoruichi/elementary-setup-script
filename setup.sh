@@ -59,7 +59,6 @@ sudo apt-get -y install elementary-tweaks
 ## 4. installing wallpapers
 sudo apt-get -y install elementary-wallpapers-extra
 
-sudo apt -y install git unity-tweak-tool gnome-themes-standard gtk2-engines-murrine
 cd ~/
 mkdir Source
 cd ~/Source
@@ -70,3 +69,5 @@ sudo cp -R arc-black-ubuntu* /usr/share/themes
 sudo add-apt-repository ppa:numix/ppa
 sudo apt-get update
 sudo apt-get -y install numix-icon-theme-circle
+
+
