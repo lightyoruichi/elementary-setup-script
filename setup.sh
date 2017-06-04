@@ -47,7 +47,7 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 ## 3. Update list of available packages
 sudo apt-get update
 ## 4. Install Spotify
-sudo apt-get -y install spotify-client
+sudo apt-get -y install spotify-client --allow-unauthenticated
 
 # Elementary Tweak
 ## 1. adding repository
@@ -71,3 +71,14 @@ sudo apt-get update
 sudo apt-get -y install numix-icon-theme-circle
 
 
+#zsh powerlevel9k
+sudo apt-get -y install zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cd ~/Source
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+cp ~/Source/elementary-setup-script/.zshrc ~/
+sudo apt-get -y install zsh-syntax-highlighting
+cd ~/Source
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
