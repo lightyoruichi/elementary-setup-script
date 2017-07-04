@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get -y dist-upgrade
+	sudo apt-get -y dist-upgrade
 
 # Properties Commons (to install elementary tweaks
 sudo apt-get -y install software-properties-common
@@ -27,6 +27,22 @@ sudo apt-get update
 sudo apt-get -y install tlp tlp-rdw
 ## 4. starting application
 sudo tlp start
+
+#Some better stuff to install on it too, also some thinkpad stuff
+sudo apt-get install lm-sensors
+## thinkfan
+sudo apt-get install thinkfan
+echo "options thinkpad_acpi fan_control=1" > /etc/modprobe.d/thinkfan.conf
+modprobe thinkpad_acpi
+systemctl enable thinkfan
+
+#trackpad fix
+xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Noise Cancellation" 20 20
+
+#screen tearing
+sudo mkdir /etc/X11/xorg.conf.d/
+echo -e 'Section "Device" \n Identifier "Intel Graphics" \n Driver "Intel" \n Option "TearFree" "true" \nEndSection' | sudo tee /etc/X11/xorg.conf.d/20-intel.conf
+
 
 sudo apt-get autoremove
 sudo apt-get autoclean
@@ -70,15 +86,6 @@ sudo add-apt-repository ppa:numix/ppa
 sudo apt-get update
 sudo apt-get -y install numix-icon-theme-circle
 
-
-#zsh powerlevel9k
-sudo apt-get -y install zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cd ~/Source
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-cp ~/Source/elementary-setup-script/.zshrc ~/
-sudo apt-get -y install zsh-syntax-highlighting
-cd ~/Source
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+#tsk tsk tsk bash bro, bash
+cd ~/
+git clone git@github.com:lightyoruichi/bashrc.git .
