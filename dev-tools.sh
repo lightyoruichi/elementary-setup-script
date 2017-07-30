@@ -17,3 +17,9 @@ sudo apt-get update
 sudo apt-get -y install atom
 
 
+
+
+#git
+git config --global user.email "satnam182@gmail.com"
+git config --global user.name "Harinder Singh"
+

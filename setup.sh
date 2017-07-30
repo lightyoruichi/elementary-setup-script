@@ -1,5 +1,14 @@
+#!/bin/bash
+
+#Fix 1080p for external monitor
+xrandr --newmode "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --addmode VGA-1 1920x1080
+xrandr --output VGA-1 --mode 1920x1080
+
+
+#Update
 sudo apt-get update
-	sudo apt-get -y dist-upgrade
+sudo apt-get -y dist-upgrade
 
 # Properties Commons (to install elementary tweaks
 sudo apt-get -y install software-properties-common
@@ -59,7 +68,7 @@ sudo apt-get -y install -f
 ## 1. Add the Spotify repository signing key to be able to verify downloaded packages
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 -y
 ## 2. Add the Spotify repository
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list 
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 ## 3. Update list of available packages
 sudo apt-get update
 ## 4. Install Spotify
@@ -69,7 +78,7 @@ sudo apt-get -y install spotify-client --allow-unauthenticated
 ## 1. adding repository
 sudo add-apt-repository ppa:philip.scott/elementary-tweaks -y
 ## 2. updating apt-get
-sudo apt-get -y update 
+sudo apt-get -y update
 ## 3. installing tweaks
 sudo apt-get -y install elementary-tweaks
 ## 4. installing wallpapers
